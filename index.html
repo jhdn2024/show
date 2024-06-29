@@ -9,12 +9,13 @@
         .image-container {
             display: flex;
             flex-direction: column;
-            align-items: center; 
+            align-items: center;
         }
+
         .image-item {
             margin: 10px;
             text-align: center;
-            width: 100%; 
+            width: 100%;
         }
 
         img {
@@ -60,7 +61,8 @@
                     fetch(`txt/${code}.txt`) // 根据实际情况调整描述文件路径
                         .then(response => response.text())
                         .then(text => {
-                            description.textContent = text;
+                            if (!text.indexOf('base64'))
+                                description.textContent = text;
                         })
                         .catch(error => {
                             console.error('读取错误', error);
