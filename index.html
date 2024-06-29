@@ -61,7 +61,7 @@
                     fetch(`data/${code}.txt`) // 根据实际情况调整描述文件路径
                         .then(response => response.text())
                         .then(text => {
-                            if (!text.indexOf('base64') < -1)
+                            if (text.indexOf('base64') < 0)
                                 description.textContent = text;
                             else {
                                 description.textContent = '';
