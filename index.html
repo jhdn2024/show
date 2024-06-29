@@ -42,10 +42,10 @@
             imageItem.className = 'image-item';
             //创建图片元素
             const img = document.createElement('img');
-            let imgfile = `img/${code}.jpg`;
+            let imgfile = `data/${code}.jpg`;
             fetch(imgfile).then(response => {
                 if (response.ok) {
-                    img.src = `img/${code}.jpg`;
+                    img.src = `imgfile`;
                     img.alt = `关于 ${code}的图片`;//这个可以不写，当图片加载失败会显示这里面的字
 
                     // 创建一个新的 p 元素，用于显示图片的介绍文字
@@ -58,12 +58,15 @@
                     imageContainer.appendChild(imageItem);
 
                     // 读取图片的描述
-                    fetch(`txt/${code}.txt`) // 根据实际情况调整描述文件路径
+                    fetch(`data/${code}.txt`) // 根据实际情况调整描述文件路径
                         .then(response => response.text())
                         .then(text => {
-                            description.textContent = '';
-                            if (!text.indexOf('base64'))
+                            if (!text.indexOf('base64') < -1)
                                 description.textContent = text;
+                            else {
+                                description.textContent = '';
+
+                            }
                         })
                         .catch(error => {
                             console.error('读取错误', error);
