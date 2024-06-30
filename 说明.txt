@@ -6,4 +6,7 @@
 3.使用命令 git commit -m '       这里面是说明，可以自定义，就是本次提交都修改了什么'
 4.使用命令git push                   真正的推送到服务器
 
+
+5向下同步命令 git pull
+
 https://jhdn2024.github.io/show/
